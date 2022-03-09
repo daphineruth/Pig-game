@@ -1,4 +1,4 @@
-
+'use strict';
 
 var scores, roundScores, activePlayer,dice1, dice2, gamePlaying,scoreSet;
 var diceRoll=[];
@@ -24,7 +24,7 @@ document.querySelector(".btn-roll").addEventListener("click",function(){
    
      if (dice1 !== 1 && dice2 !== 1){
         
-        roundScores += (dice1 +dice2); // == roundScore = roundScore + dice;
+        roundScores += (dice1 +dice2); 
         document.querySelector('#current-'+activePlayer).textContent = roundScores;
 
 
@@ -69,7 +69,7 @@ function scoreSetting (){
 function start(){
   gamePlaying = true;
   scores = [0,0];
-  roundScore = 0;
+  roundScores = 0;
   activePlayer = 0;
 
 
@@ -96,30 +96,19 @@ function start(){
 
 
 function nextPlayer(){
-  //Next player
-  //ternary operator
+  
   activePlayer === 0? activePlayer = 1: activePlayer = 0;
-  roundScore = 0;
+  roundScores = 0;
 
   document.getElementById("current-0").textContent = "0";
   document.getElementById("current-1").textContent = "0";
 
-  //document.querySelector(".player-0-panel").classList.remove("active");
-  //document.querySelector(".player-1-panel").classList.add("active");
+  
   document.querySelector(".player-1-panel").classList.toggle("active");
   document.querySelector(".player-0-panel").classList.toggle("active");
 
   document.getElementById("dice-0").style.display = "none";
   document.getElementById("dice-1").style.display = "none";
+
 };
 
-
-// //DOM by Using ID    //only change textContent
-// // setter
-//
-//
-// // document.querSelector('#current-' + activePlayer).innerHTML = "<em>" + dice +" </em>  "
-//
-// // getter
-// var x = document.querySelector('#score-0').textContent;
-// console.log(x);
