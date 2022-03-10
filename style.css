@@ -91,7 +91,7 @@ body {
 
 .player-current-box {
     background-color: #EB4D4D;
-    color: #fff;
+    color: rgb(117, 110, 110);
     width: 40%;
     margin: 0 auto;
     padding: 12px;
@@ -162,5 +162,5 @@ i {
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
-.winner { background-color: #f7f7f7; }
+.winner { background-color: #1b1a1a; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }

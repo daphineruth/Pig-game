@@ -1,5 +1,5 @@
 'use strict';
-
+//selecting elements
 var scores, roundScores, activePlayer,dice1, dice2, gamePlaying,scoreSet;
 var diceRoll=[];
 scoreSet = 100;
@@ -38,7 +38,7 @@ document.querySelector(".btn-roll").addEventListener("click",function(){
 document.querySelector(".btn-hold").addEventListener("click",function(){
   if(gamePlaying){
     
-    scores[activePlayer] += roundScore;
+    scores[activePlayer] += roundScores;
 
     
     document.querySelector("#score-"+activePlayer).textContent = scores[activePlayer];
@@ -111,4 +111,4 @@ function nextPlayer(){
   document.getElementById("dice-1").style.display = "none";
 
 };
-
+document.querySelector(".btn-hold").addEventListener("click",start);
