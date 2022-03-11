@@ -1,8 +1,8 @@
 'use strict';
 //selecting elements
-const  score0El = document.getElementById("score-0");
-const  score1El = document.getElementById("score-1");
-const  dice0El = document.getElementById("dice-0");
+const  score0El = document.getElementById("score--0");
+const  score1El = document.getElementById("score--1");
+const  dice0El = document.getElementById("dice--0");
 const  dice1El = document.getElementById("dice-1");
 const  btnNewEl = document.querySelector("btn-new");
 const  btnRollEl = document.querySelector("btn-roll");
