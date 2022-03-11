@@ -16,9 +16,12 @@ const current0El = document.getElementById("current-0");
 const current1El = document.getElementById("current-1");
 
 //starting conditions
- const Scores = [] ;
+
+const Scores = [] ;
 score0El.textContent = 0;
 score1El.textContent = 0;
+current0El.textContent = 0;
+current1El.textContent = 0;
 let activePlayer;
 let currentScores;
 
@@ -48,16 +51,49 @@ start();
 
 //rolling dice functionality
 btnRollEl.addEventListener('click', function(){
-const dice =Math.trunc(Math.random()*6 + 1);
+  
+    if (gamePlaying){
+  
+      // generate a random number
+    dice0El = Math.trunc(( Math.random() * 6 )) +1;
+      dice1El= Math.trunc(( Math.random() * 6 )) +1;
+    
+  
+      // dice pic shows up
+      
+      dice0DOM.style.display = "block";
+      dice1DOM.style.display = "block";
+       
+      // relate the random number to the Dice
+  
+      dice0El.src = `dice - ${dice}.png`;
+      dice1El.src = 'dice - ${dice}.png';
+      
+     if (dice0El !== 1 && dice1El !== 1){
+          //Add Score
+          currentScores += (dice0El +dice1El); 
+          
+          document.querySelector('#current-'+activePlayer).textContent = currentScores;
+  
+  
+      }else {
+         nextPlayer();
+      }
+    };
+  
+  });
 
-dice0El.style.display = "block";
-dice1El.style.display = "block";
 
 
-})
+document.querySelector(".btn-new").addEventListener("click",start);
+ 
+function scoreSetting (){
+   scoreSet = document.getElementById("scoreSetting").value;
+   start();
+   return scoreSet;
 
 //switching player fuction
-function nextPlayer(){
+function nextPlayer() {
   
   activePlayer === 0? activePlayer = 1: activePlayer = 0;
   roundScores = 0;
@@ -72,5 +108,28 @@ function nextPlayer(){
   dice0El.style.display = "none";
   dice1El.style.display = "none";
 
+  
+    
+  
+
+
+
 };
 document.querySelector(".btn-hold").addEventListener("click",start);
+Scores[activePlayer] += roundScore;
+
+    //update it to UI
+    document.querySelector("#score-"+activePlayer).textContent = scores[activePlayer];
+
+    //check if player won the Game
+    if (Scores[activePlayer] >= scoreSet) {
+      gamePlaying = false;
+      document.querySelector("#name-"+activePlayer).textContent = "Winner!";
+      document.getElementById("dice-0").style.display = "none";
+      document.getElementById("dice-1").style.display = "none";
+      document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active");
+      document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner");
+
+    } else {
+       nextPlayer();
+    }
