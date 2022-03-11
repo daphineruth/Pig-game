@@ -56,15 +56,14 @@ btnRoll.addEventListener('click', function () {
 
     
     diceEl.classList.remove('hidden');
-    diceEl.src = `dice-${dice}.png`;
+    diceEl.src = `images/dice-${dice}.png`;
 
     
     if (dice !== 1) {
       
       currentScore += dice;
-      document.getElementById(
-        `current--${activePlayer}`
-      ).textContent = currentScore;
+      document.getElementById( `current--${activePlayer}`).textContent = currentScore;
+
     } else {
 
       switchPlayer();
@@ -77,8 +76,7 @@ btnHold.addEventListener('click', function () {
     
     scores[activePlayer] += currentScore;
 
-    document.getElementById(`score--${activePlayer}`).textContent =
-      scores[activePlayer];
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
     
     if (scores[activePlayer] >= 100) {
